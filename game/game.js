@@ -1,6 +1,7 @@
 let turn = "X";
 let isX = true;
 let count = 0;
+document.getElementById("XorO").innerHTML = "Lets' play! X Begins.";
 
 const changeTurn = () => {
   isX = !isX;
@@ -9,6 +10,10 @@ const changeTurn = () => {
   } else {
     turn = "O";
   }
+  if (count !== 0) {
+    document.getElementById("XorO").innerHTML = `It's ${turn}'s turn`;
+  }
+
   didWin();
 };
 
@@ -98,16 +103,21 @@ const didWin = () => {
       endGame();
       break;
     case count === 9:
-      setTimeout(function () {
-        alert(`It's a tie! No one wins! A rematch?`);
-      }, 0);
+      document.getElementsByClassName("footer")[0].innerHTML =
+        "It's a tie! No one wins! A rematch?";
+    // setTimeout(function () {
+    //   alert(`It's a tie! No one wins! A rematch?`);
+    // }, 0);
   }
 };
 
 const alertWin = (whoWon) =>
-  setTimeout(function () {
-    alert(`We have a winner! ${whoWon} WON!!!`);
-  }, 0);
+  (document.getElementsByClassName(
+    "footer"
+  )[0].innerHTML = `We have a winner! ${whoWon} WON!!!`);
+// setTimeout(function () {
+//   alert(`We have a winner! ${whoWon} WON!!!`);
+// }, 0);
 
 const endGame = () => {
   for (let i = 1; i <= 3; i++) {
@@ -144,4 +154,5 @@ const reset = () => {
   turn = "X";
   isX = true;
   count = 0;
+  document.getElementById("XorO").innerHTML = "Lets' play! X Begins.";
 };
