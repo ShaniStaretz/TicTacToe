@@ -8,12 +8,13 @@
     <link
       rel="shortcut icon"
       type="image/x-icon"
-      href="images/tic-tac-toe.png"
+      href="../images/tic-tac-toe.png"
     />
     <title>TicTacToe</title>
   </head>
   <body>
     <div class="game-container">
+      <div class="nav-bar">...</div>
       <div class="header">
         <h1 class="title">Tic-Tac-Toe</h1>
       </div>
@@ -33,10 +34,19 @@
           <div class="col2" id="r3c2" onclick="play('r3c2');"></div>
           <div class="col3" id="r3c3" onclick="play('r3c3');"></div>
         </div>
-        <input type="button" value="RESET" onclick="reset();" />
+        <div class="game-buttons">
+          <input type="button" value="RESET" onclick="reset();" />
+          <a href="../winner_list/winners_index.html"
+            ><input type="button" value="Winners List" " /></a
+          >
+        </div>
       </div>
       <div class="footer" id="XorO"></div>
+      <div class="credentials">
+        &#169; All rights reserved to Noa, Liza and Idil (she codes;)
+      </div>
     </div>
+
     <script src="game.js"></script>
   </body>
 </html>

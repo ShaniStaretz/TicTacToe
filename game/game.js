@@ -2,6 +2,7 @@ let turn = "X";
 let isX = true;
 let count = 0;
 document.getElementById("XorO").innerHTML = "Lets' play! X Begins.";
+localStorage.setItem("whoWon", "Winners Status");
 
 const changeTurn = () => {
   isX = !isX;
@@ -39,7 +40,6 @@ const play = (idInput) => {
       if (document.getElementById("r2c1").innerHTML === "") {
         document.getElementById("r2c1").innerHTML = turn;
       }
-      break;
       break;
     case "r2c2":
       if (document.getElementById("r2c2").innerHTML === "") {
@@ -105,16 +105,22 @@ const didWin = () => {
     case count === 9:
       document.getElementsByClassName("footer")[0].innerHTML =
         "It's a tie! No one wins! A rematch?";
+      localStorage.setItem("whoWon", "It's a tie! No one wins! A rematch?");
     // setTimeout(function () {
     //   alert(`It's a tie! No one wins! A rematch?`);
     // }, 0);
   }
 };
 
-const alertWin = (whoWon) =>
-  (document.getElementsByClassName(
+const alertWin = (whoWon) => {
+  document.getElementsByClassName(
     "footer"
-  )[0].innerHTML = `We have a winner! ${whoWon} WON!!!`);
+  )[0].innerHTML = `We have a winner! ${whoWon} WON!!!`;
+  localStorage.setItem(
+    "whoWon",
+    `We have a winner! ${whoWon} WON!!! A rematch?`
+  );
+};
 // setTimeout(function () {
 //   alert(`We have a winner! ${whoWon} WON!!!`);
 // }, 0);
@@ -155,4 +161,5 @@ const reset = () => {
   isX = true;
   count = 0;
   document.getElementById("XorO").innerHTML = "Lets' play! X Begins.";
+  localStorage.setItem("whoWon", "Winners Status");
 };

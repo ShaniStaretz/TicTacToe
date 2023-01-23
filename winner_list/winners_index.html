@@ -1,0 +1,48 @@
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="winners_styles.css" />
+    <link
+      rel="shortcut icon"
+      type="image/x-icon"
+      href="../images/tic-tac-toe.png"
+    />
+    <title>TicTacToe</title>
+  </head>
+  <body>
+    <div class="winner-container">
+      <div class="nav-bar"></div>
+      <div class="header-winner" >
+        <h2 id="winner">Winners Status</h2>
+    </div>
+      <div class="winners-table-container">
+        <table class="winners-table">
+          <caption class="table-caption">Winners List</caption>
+          <th><td>Name</td><td># of wins</td></th>
+          <tbody>
+              <tr><td>1)</td> <td id="first-name">Name1</td><td id="first-score">100</td></tr>
+              <tr><td>2)</td> <td id="second-name">Name2</td><td id="second-score">50</td></tr>
+              <tr><td>3)</td> <td id="third-name">Name3</td><td id="third-score">30</td></tr>
+              <tr><td>4)</td> <td id="fourth-name">Name4</td><td id="fourth-score">10</td></tr>
+              <tr><td>5)</td> <td id="fifth-name">Name5</td><td id="fifth-score">5</td></tr>
+          </tbody>
+        </table>   
+        <a href="../game/index.html"
+            ><input type="button" value="Back to Game" /></a
+          >     
+      </div>
+      
+      <div class="credentials">
+        &#169; All rights reserved to Noa, Liza and Idil (she codes;)
+      </div>
+     
+    </div>
+    <script  src="../users/user.js"></script>
+    <script src="../game/game.js"></script>
+    <script type="module" src="winners_scripts.js"></script>
+  </body>
+</html>
