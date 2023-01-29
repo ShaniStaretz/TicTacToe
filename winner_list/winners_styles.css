@@ -107,6 +107,8 @@ th {
   left: 45%;
   padding: 10px;
   font-weight: bold;
+  position: absolute;
+  bottom: -20px;
 }
 
 [type="button"]:hover {
