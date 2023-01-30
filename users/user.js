@@ -1,4 +1,4 @@
-function User(firstName, lastName, email) {
+export function User(firstName, lastName, email) {
   this.firstName = firstName;
   this.lastName = lastName;
   this.email = email;
@@ -6,7 +6,7 @@ function User(firstName, lastName, email) {
 }
 
 const user1 = new User("Idil", "Kasuto Kelson", "idilkasuto@gmail.com");
-const user2 = new User("Noa", "She Codes", "noa@gmail.com");
+const user2 = new User("Noa", "Said", "noasaid@gmail.com");
 const user3 = new User("Liza", "Bresler", "lisabresler@gmail.com");
 const user4 = new User("Moshe", "Cohen", "moshe@gmail.com");
 const user5 = new User("Jack", "Levi", "jack@gmail.com");
