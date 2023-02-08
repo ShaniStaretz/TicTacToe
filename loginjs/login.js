@@ -1,8 +1,9 @@
 import { userList, User } from "../users/user.js";
 
-let registerForm = document.getElementById("registerForm");
-let playerExistsEl = document.getElementById("player-exists");
-let playerAddedEl = document.getElementById("player-added");
+let loginForm = document.getElementById("loginForm");
+let submitEl = document.getElementById("submit");
+let playerDoesNotExistEl = document.getElementById("player-does-not-exist");
+
 let userExists = false;
 
 if (
@@ -11,6 +12,15 @@ if (
   localStorage.getItem("userList").length === 0
 ) {
   localStorage.setItem("userList", JSON.stringify(userList));
+  console.log("done");
+}
+
+if (
+  localStorage.getItem("loggedUser") === undefined ||
+  localStorage.getItem("loggedUser") === null ||
+  localStorage.getItem("loggedUser").length === 0
+) {
+  localStorage.setItem("loggedUser", "Guest");
   console.log("done");
 }
 
@@ -34,9 +44,10 @@ const checkingExists = (first_Name, last_Name, e_mail) => {
       user.email.toLowerCase() === e_mail.toLowerCase()
     ) {
       console.log("exists");
-      playerExistsEl.className = "visible";
-      let OKEl = document.getElementById("OK");
-      OKEl.addEventListener("click", OKFunc);
+      localStorage.setItem("loggedUser", `${first_Name} ${last_Name}`);
+      console.log("logged");
+      loginForm.reset();
+      window.location.href = "../game/index.html";
       userExists = true;
       console.log("true");
       return true;
@@ -45,7 +56,7 @@ const checkingExists = (first_Name, last_Name, e_mail) => {
   return userExists;
 };
 
-registerForm.addEventListener("submit", (e) => {
+loginForm.addEventListener("submit", (e) => {
   e.preventDefault();
   let first_Name = document.getElementById("firstName").value;
   let last_Name = document.getElementById("lastName").value;
@@ -54,35 +65,25 @@ registerForm.addEventListener("submit", (e) => {
   userExists = checkingExists(first_Name, last_Name, e_mail);
 
   if (userExists === false) {
-    console.log(first_Name + " " + last_Name + " " + e_mail);
-    // const newUser = new User(first_Name, last_Name, e_mail,0);
-
-    parsedArray.push({
-      firstName: first_Name,
-      lastName: last_Name,
-      email: e_mail,
-      wins: 0,
-    });
-    console.log(parsedArray);
-    localStorage.setItem("loggedUser", `${first_Name} ${last_Name}`);
-    localStorage.setItem("userList", JSON.stringify(parsedArray));
-    console.log(JSON.parse(localStorage.getItem("userList") || "[]"));
-
-    console.log("added");
-
-    playerAddedEl.className = "visible";
-    // let OKEl2 = document.getElementById("OK2");
-    // OKEl2.addEventListener("click", OKFunc);
-    setTimeout(() => {
-      window.location.href = "../game/index.html";
-    }, "1000");
+    playerDoesNotExistEl.className = "visible";
+    submitEl.className = "hidden";
+    loginForm.reset();
+    let toRegEl = document.getElementById("go-to-register2");
+    let playAsGuestEl = document.getElementById("play-as-guest");
+    toRegEl.addEventListener("click", goToReg);
+    playAsGuestEl.addEventListener("click", goToGame);
+    localStorage.setItem("loggedUser", "Guest");
   }
 });
 
-const OKFunc = () => {
-  playerExistsEl.className = "hidden";
-  playerAddedEl.className = "hidden";
-  console.log("OK clicked");
+const goToReg = () => {
+  playerDoesNotExistEl.className = "hidden";
+  console.log("gotoReg clicked");
+  window.location.href = "../register/register.html";
+};
+
+const goToGame = () => {
+  playerDoesNotExistEl.className = "hidden";
+  console.log("gotoGame clicked");
   window.location.href = "../game/index.html";
-  registerForm.reset();
 };
