@@ -27,7 +27,7 @@ body {
   font-family: "Balsamiq Sans", sans-serif;
 }
 
-/* .credentials {
+/* .footer {
   grid-column: 1/13;
   grid-row: 12/13;
   display: flex;
@@ -37,7 +37,7 @@ body {
   background: -webkit-linear-gradient(top, #0f2f53, #264e7d);
 } */
 
-.credentials {
+.footer {
   grid-column: 1/13;
   grid-row: 12/13;
   overflow: hidden;
