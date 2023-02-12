@@ -24,7 +24,7 @@ body {
   background: -webkit-linear-gradient(top, #0f2f53, #3b79c0);
 }
 
-.credentials {
+.footer {
   grid-column: 1/4;
   grid-row: 2/2;
   width: 100%;

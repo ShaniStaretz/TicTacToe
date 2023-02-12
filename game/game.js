@@ -103,7 +103,7 @@ const didWin = () => {
       endGame();
       break;
     case count === 9:
-      document.getElementsByClassName("footer")[0].innerHTML =
+      document.getElementsByClassName("panel")[0].innerHTML =
         "It's a tie! No one wins! A rematch?";
       localStorage.setItem("whoWon", "It's a tie! No one wins! A rematch?");
     // setTimeout(function () {
@@ -114,7 +114,7 @@ const didWin = () => {
 
 const alertWin = (whoWon) => {
   document.getElementsByClassName(
-    "footer"
+    "panel"
   )[0].innerHTML = `We have a winner! ${whoWon} WON!!!`;
   localStorage.setItem(
     "whoWon",
