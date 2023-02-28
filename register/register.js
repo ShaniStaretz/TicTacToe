@@ -1,48 +1,27 @@
 import { userList, User } from "../users/user.js";
+import {
+  addUser,
+  addUserWithId,
+  getAllUsers,
+  getNumberOfUsers,
+  isUserExists,
+  isEmailExists,
+} from "../firebase/firebase.js";
 
 let registerForm = document.getElementById("registerForm");
 let playerExistsEl = document.getElementById("player-exists");
 let playerAddedEl = document.getElementById("player-added");
 let userExists = false;
 
-if (
-  localStorage.getItem("userList") === undefined ||
-  localStorage.getItem("userList") === null ||
-  localStorage.getItem("userList").length === 0
-) {
-  localStorage.setItem("userList", JSON.stringify(userList));
-  console.log("done");
-}
-
-let userArray = localStorage.getItem("userList");
-let parsedArray = JSON.parse(userArray);
-console.log(parsedArray);
-// console.log(parsedArray[0]);
-console.log(typeof parsedArray);
-
-const checkingExists = (first_Name, last_Name, e_mail) => {
-  userArray = localStorage.getItem("userList");
-  parsedArray = JSON.parse(userArray);
-  console.log(parsedArray[0]);
-
-  parsedArray.forEach((user) => {
-    console.log("checking");
-    console.log(user.firstName + " " + user.lastName + " " + user.email);
-    if (
-      user.firstName.toLowerCase() === first_Name.toLowerCase() &&
-      user.lastName.toLowerCase() === last_Name.toLowerCase() &&
-      user.email.toLowerCase() === e_mail.toLowerCase()
-    ) {
-      console.log("exists");
-      playerExistsEl.className = "visible";
-      let OKEl = document.getElementById("OK");
-      OKEl.addEventListener("click", OKFunc);
-      userExists = true;
-      console.log("true");
-      return true;
-    }
-  });
-  return userExists;
+const checkingExists = (e_mail) => {
+  isEmailExists(e_mail)
+    .then((res) => {
+      console.log("Is user exists? " + res);
+      return res;
+    })
+    .catch((err) => {
+      console.log("Unsuccessful user check: " + err);
+    });
 };
 
 registerForm.addEventListener("submit", (e) => {
@@ -50,32 +29,41 @@ registerForm.addEventListener("submit", (e) => {
   let first_Name = document.getElementById("firstName").value;
   let last_Name = document.getElementById("lastName").value;
   let e_mail = document.getElementById("email").value;
+  let pw = document.getElementById("password").value;
 
-  userExists = checkingExists(first_Name, last_Name, e_mail);
+  userExists = checkingExists(e_mail);
+  console.log("userExists? " + userExists);
 
-  if (userExists === false) {
+  if (!userExists) {
     console.log(first_Name + " " + last_Name + " " + e_mail);
     // const newUser = new User(first_Name, last_Name, e_mail,0);
 
-    parsedArray.push({
-      firstName: first_Name,
-      lastName: last_Name,
-      email: e_mail,
-      wins: 0,
-    });
-    console.log(parsedArray);
-    localStorage.setItem("loggedUser", `${first_Name} ${last_Name}`);
-    localStorage.setItem("userList", JSON.stringify(parsedArray));
-    console.log(JSON.parse(localStorage.getItem("userList") || "[]"));
+    let userId = null;
 
-    console.log("added");
+    getNumberOfUsers()
+      .then((res) => {
+        console.log("res from len " + res);
+        console.log(res + " " + typeof res);
+        userId = res + 1;
+        addUserWithId(first_Name, last_Name, e_mail, pw, userId);
+        registerForm.reset();
 
-    playerAddedEl.className = "visible";
-    // let OKEl2 = document.getElementById("OK2");
-    // OKEl2.addEventListener("click", OKFunc);
-    setTimeout(() => {
-      window.location.href = "../game/index.html";
-    }, "1000");
+        console.log("userid1: " + userId);
+        localStorage.setItem("loggedUser", `${first_Name} ${last_Name}`);
+        localStorage.setItem("loggedUserId", `${userId}`);
+
+        console.log("added");
+
+        playerAddedEl.className = "visible";
+        // let OKEl2 = document.getElementById("OK2");
+        // OKEl2.addEventListener("click", OKFunc);
+        setTimeout(() => {
+          window.location.href = "../game/index.html";
+        }, "1000");
+      })
+      .catch((err) => {
+        console.log("Unsuccessful adding, error:" + err);
+      });
   }
 });
 

@@ -100,7 +100,7 @@ th {
   font-weight: bold;
 }
 
-[type="button"] {
+.winner-container [type="button"] {
   border: 1px solid #345479;
   background: #345479;
   border-radius: 10%;
@@ -116,7 +116,7 @@ th {
   bottom: -20px;
 }
 
-[type="button"]:hover {
+.winner-container [type="button"]:hover {
   border: 1px solid #337ab7;
   background: white;
   border-radius: 15%;
@@ -130,9 +130,9 @@ th {
     position: relative;
   }
 
-  /* a [type="button"] {
-    left: 30%;
-  } */
+  .winners-table-container [type="button"] {
+    left: 35%;
+  }
 }
 
 @media only screen and (max-width: 500px) {
