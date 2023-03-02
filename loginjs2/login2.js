@@ -60,6 +60,14 @@ const getUser = (e_mail, password) => {
         console.log(fullName);
         localStorage.setItem("loggedUser", fullName);
         localStorage.setItem("loggedUserId", userId);
+        let now = new Date();
+        let storedYear = now.getFullYear();
+        let storedMonth = now.getMonth();
+        let storedDay = now.getDate();
+        let date = [storedDay, storedMonth, storedYear];
+        localStorage.setItem("loginDay", date);
+        let storedDate = localStorage.getItem("loginDay");
+        console.log(storedDate);
 
         console.log("logged");
         loginForm.reset();

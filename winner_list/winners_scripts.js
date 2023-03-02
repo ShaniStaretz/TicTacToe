@@ -24,7 +24,7 @@ getAllUsers()
     console.log(res);
     userList = res;
     // console.log("TheUserList: " + JSON.stringify(userList));
-    // userList.sort((a, b) => parseInt(b.wins) - parseInt(a.wins));
+    userList.sort((a, b) => parseInt(b.Wins) - parseInt(a.Wins));
     // console.log("TheUserList2: " + JSON.stringify(userList));
     setWinnerList();
   })
@@ -38,6 +38,7 @@ const setWinnerList = () => {
   userList.sort((a, b) => parseInt(b.wins) - parseInt(a.wins));
 
   console.log("In function: " + JSON.stringify(userList[0]));
+  // console.log("0: " + JSON.stringify(userList));
   console.log("0: " + JSON.stringify(userList[0]));
   console.log("0: " + userList[0].FirstName);
   document.getElementById(
