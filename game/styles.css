@@ -115,7 +115,7 @@ body {
   border-right: 2px ridge black;
 }
 
-[type="button"] {
+.game-container [type="button"] {
   border: 1px solid #345479;
   background: #345479;
   border-radius: 10%;
@@ -138,8 +138,8 @@ body {
   background: -webkit-linear-gradient(top, #0f2f53, #3f80ca);
 }
 
-input:focus,
-input:not(:focus):valid {
+/* .game-container input:focus,
+.game-container input:not(:focus):valid {
   top: 8px;
   bottom: 10px;
   left: 20px;
@@ -148,7 +148,7 @@ input:not(:focus):valid {
   font-size: 14px;
   width: 200px;
   height: 35px;
-}
+} */
 
 @media only screen and (max-height: 807px) {
   .header {
