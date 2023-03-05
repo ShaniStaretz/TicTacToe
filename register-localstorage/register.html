@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="register.css" />
+    <link
+      rel="shortcut icon"
+      type="image/x-icon"
+      href="../images/tic-tac-toe.png"
+    />
+    <title>TicTacToe</title>
+  </head>
+  <body>
+    <div class="register-container">
+      <div class="nav-bar">...</div>
+      <div class="header">
+        <h1 class="title">Register</h1>
+      </div>
+      <div class="register-form-container">
+        <form id="registerForm" /*onsubmit="response()"*/>
+          <div class="field-block">
+            <label for="firstName">First Name: </label>
+            <input
+              type="text"
+              id="firstName"
+              placeholder="First Name"
+              name="firstName"
+              required
+            />
+            <br />
+          </div>
+          <div class="field-block">
+            <label for="lastName">Last Name: </label>
+            <input
+              type="text"
+              id="lastName"
+              placeholder="Last Name"
+              name="lastName"
+              required
+            />
+            <br />
+          </div>
+          <div class="field-block">
+            <label for="email">Email:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </label>
+            <input
+              type="email"
+              id="email"
+              placeholder="Email"
+              name="email"
+              required
+            />
+            <br />
+          </div>
+          <div class="field-block">
+            <label for="password">Password: </label>
+            <input
+              type="password"
+              id="password"
+              placeholder="Password"
+              name="password"
+              required
+            />
+            <br />
+          </div>
+          <input type="submit" value="Submit" id="submit" />
+        </form>
+       
+      </div>
+      <div id="player-exists" class="hidden">
+        <p>Player Already Exists</p>    
+        <button id="OK">Game</button>
+      </div>
+      <div id="player-added" class="hidden">
+        <p>Player Added Successfully</p>    
+        <!-- <button id="OK2">To Game</button> -->
+      </div>
+      <div class="footer">
+        <!-- &#169; All rights reserved to Noa, Liza and Idil (she codes;) -->
+        <iframe
+          src="../footer/footer.html"
+          title="footer"
+          width="100%"
+          height="100%"
+          style="border: none"
+        ></iframe>
+      </div>
+      
+    </div>
+    
+    <script type="module" src="register.js"></script>
+  </body>
+</html>
