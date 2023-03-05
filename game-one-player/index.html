@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="styles.css" />
+    <link
+      rel="shortcut icon"
+      type="image/x-icon"
+      href="../images/tic-tac-toe.png"
+    />
+    <title>TicTacToe</title>
+  </head>
+  <body>
+    <div class="game-container">
+      <div class="nav-bar">...</div>
+      <div class="header">
+        <h1 class="title">Tic-Tac-Toe</h1>
+      </div>
+      <div class="board">
+        <div class="row1">
+          <div class="col1" id="r1c1"></div>
+          <div class="col2" id="r1c2"></div>
+          <div class="col3" id="r1c3"></div>
+        </div>
+        <div class="row2">
+          <div class="col1" id="r2c1"></div>
+          <div class="col2" id="r2c2"></div>
+          <div class="col3" id="r2c3"></div>
+        </div>
+        <div class="row3">
+          <div class="col1" id="r3c1"></div>
+          <div class="col2" id="r3c2"></div>
+          <div class="col3" id="r3c3"></div>
+        </div>
+        <div class="game-buttons">
+          <!-- <input type="button" value="RESET" onclick="reset();" /> -->
+          <input type="button" value="RESET" id="reset" />
+          <a href="../winner_list/winners_index.html"
+            ><input type="button" value="Winners List" " /></a
+          >
+        </div>
+      </div>
+      <div class="panel" id="XorO"></div>
+      <div class="footer">
+        <!-- &#169; All rights reserved to Noa, Liza and Idil (she codes;) -->
+        <iframe
+          src="../footer/footer.html"
+          title="footer"
+          width="100%"
+          height="100%"
+          style="border: none"
+        ></iframe>
+      </div>
+    </div>
+    <script type="module" src="../users/user.js"></script>
+    <script type="module" src="game.js"></script>
+  </body>
+</html>
