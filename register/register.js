@@ -58,7 +58,7 @@ registerForm.addEventListener("submit", (e) => {
         // let OKEl2 = document.getElementById("OK2");
         // OKEl2.addEventListener("click", OKFunc);
         setTimeout(() => {
-          window.location.href = "../game/index.html";
+          window.location.href = "../game-one-player/index.html";
         }, "1000");
       })
       .catch((err) => {
@@ -71,6 +71,6 @@ const OKFunc = () => {
   playerExistsEl.className = "hidden";
   playerAddedEl.className = "hidden";
   console.log("OK clicked");
-  window.location.href = "../game/index.html";
+  window.location.href = "../game-one-player/index.html";
   registerForm.reset();
 };

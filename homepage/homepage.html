@@ -22,23 +22,42 @@
         <div class="login">
             <h3>כניסה למשחק</h3>
             <br>
-            <div> <label for="email">Email: </label>
-                <input type="email" id="email" placeholder="Email" />
-            </div>
-
-            <div> <label for="password">Password: </label>
-                <input type="password" id="password" placeholder="password" />
-            </div>
-            <br>
-
-            <div> <input type="button" value="Log In" />
-                <a href=" http://127.0.0.1:5501/game/index.html">
-            </div>
+            <div class="login-form-container">
+                <form id="loginForm" /*onsubmit="response()"*/>
+                  <div class="field-block">
+                    <label for="email">Email: </label>
+                    <input
+                      type="email"
+                      id="email"
+                      placeholder="Email"
+                      name="email"
+                      required
+                    />
+                    <br />
+                  </div>
+                  <div class="field-block">
+                    <label for="password">Password: </label>
+                    <input
+                      type="password"
+                      id="password"
+                      placeholder="Password"
+                      name="password"
+                      required
+                    />
+                    <br />
+                  </div>
+                  <div class="submit"><input type="submit" value="Login" id="submit" class="visible"/></div>
+                  
+                </form>              
+              </div>
             <div class="register">
-                <input type="button" value="register link" />
-                <input type="button" value="כניסת אורח" />
+                <a href="../register/register.html"><input type="button" value="register link" /></a>
+                <a href="../game-one-player/index.html"><input type="button" value="כניסת אורח" /></a>
             </div>
-
+            <div id="player-does-not-exist" class="hidden not-exists">User doesn't exist</div>
+        </div>
+        
+        <script type="module" src="homepage.js"></script>
 </body>
 
 </html>
