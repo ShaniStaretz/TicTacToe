@@ -15,7 +15,8 @@ html {
 }
 
 body {
-  background: -webkit-linear-gradient(top, #0f2f53, rgb(182, 242, 255));
+  /* background: -webkit-linear-gradient(top, #0f2f53, rgb(182, 242, 255)); */
+  background: rgb(236, 238, 206);
   height: 100%;
 }
 
@@ -64,6 +65,7 @@ body {
 }
 
 .register-form-container {
+  background: -webkit-linear-gradient(top, #0f2f53, rgb(182, 242, 255));
   border: 1px solid white;
   border-radius: 10%;
   grid-column: 4/9;

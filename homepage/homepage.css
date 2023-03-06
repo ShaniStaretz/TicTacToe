@@ -1,22 +1,18 @@
 * {
-    padding: 0;
-    margin: 3px;
-  }
-  
-body {background-color: rgb(237, 245, 204);
-height: 100%;
+  padding: 0;
+  margin: 3px;
+}
 
+body {
+  background-color: rgb(237, 245, 204);
+  height: 100%;
 }
 img {
   align-self: center;
-
-
 }
 
-
 #h1 {
-  text-align : center;
-
+  text-align: center;
 }
 
 .homepage-container {
@@ -28,13 +24,11 @@ img {
   font-size: 20px;
 }
 
-
 .title {
   grid-column: 5/8;
   grid-row: 2/4;
   align-items: center;
-
-  }
+}
 
 .login {
   background-color: rgb(207, 211, 211);
@@ -48,15 +42,14 @@ img {
   margin: 20px;
 }
 
-
 .register {
   grid-column: 5/8;
   grid-row: 10/12;
-
-  
+  display: flex;
 }
 
-[type="button"] {
+[type="button"],
+[type="submit"] {
   border: 1px solid #0e3868;
   background: #0e3868;
   border-radius: 10%;
@@ -67,11 +60,41 @@ img {
   margin-top: 20px;
   padding: 10px;
   font-weight: bold;
+  display: flex;
 }
 
-[type="button"]:hover {
+[type="button"]:hover,
+[type="submit"]:hover {
   border: 1px solid #485865;
   background: white;
   border-radius: 15%;
   color: #0e3868;
+}
+
+.field-block {
+  margin: 10px;
+}
+
+input,
+label {
+  margin: 5px;
+  font-weight: 600;
+}
+
+input {
+  padding: 10px;
+  font-family: "Balsamiq Sans", sans-serif;
+}
+.submit {
+  display: flex;
+  justify-content: center;
+}
+
+.login .not-exists {
+  font-size: small;
+  color: red;
+}
+
+.login .hidden {
+  visibility: hidden;
 }

@@ -71,7 +71,7 @@ const getUser = (e_mail, password) => {
 
         console.log("logged");
         loginForm.reset();
-        window.location.href = "../game/index.html";
+        window.location.href = "../game-one-player/index.html";
         userExists = true;
         console.log("true");
         return true;
@@ -114,5 +114,5 @@ const goToReg = () => {
 const goToGame = () => {
   playerDoesNotExistEl.className = "hidden";
   console.log("gotoGame clicked");
-  window.location.href = "../game/index.html";
+  window.location.href = "../game-one-player/index.html";
 };
