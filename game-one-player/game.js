@@ -30,6 +30,8 @@ let placesArr = [
 let remainingArr = [0, 1, 2, 3, 4, 5, 6, 7, 8];
 
 let xArray = [];
+let oArray = [];
+let isWin = false;
 
 let r1c1Element = document.getElementById("r1c1");
 let r1c2Element = document.getElementById("r1c2");
@@ -41,6 +43,25 @@ let r3c1Element = document.getElementById("r3c1");
 let r3c2Element = document.getElementById("r3c2");
 let r3c3Element = document.getElementById("r3c3");
 
+// const changeTurn = () => {
+//   isX = !isX;
+//   console.log(isX);
+//   if (isX) {
+//     turn = "X";
+//   } else {
+//     turn = "O";
+//     let input = computersTurn();
+//     console.log("the input " + input);
+//     if (count < 8) {
+//       play(input);
+//     }
+//   }
+//   if (count !== 0) {
+//     document.getElementById("XorO").innerHTML = `It's ${turn}'s turn`;
+//     didWin();
+//   }
+// };
+
 const changeTurn = () => {
   isX = !isX;
   console.log(isX);
@@ -50,30 +71,18 @@ const changeTurn = () => {
     turn = "O";
     let input = computersTurn();
     console.log("the input " + input);
-    play(input);
+    if (count < 8) {
+      play(input);
+    }
   }
   if (count !== 0) {
     document.getElementById("XorO").innerHTML = `It's ${turn}'s turn`;
   }
-
-  didWin();
 };
-
-// let computersTurn = () => {
-//   console.log("computer");
-//   let arrLength = arrMap.length;
-//   console.log(arrLength);
-//   let idx = Math.floor(Math.random() * arrLength);
-//   console.log("idx " + idx);
-//   let key = Object.keys(arrMap[idx])[0];
-//   let value = arrMap[idx][key];
-//   console.log(key + ": " + value);
-//   return value;
-// };
 
 let computersTurn = () => {
   console.log("computer");
-  console.log(checkNextO());
+  console.log(checkBlockingX());
   let arrLength = remainingArr.length;
   console.log(arrLength);
   let idx = Math.floor(Math.random() * arrLength);
@@ -81,11 +90,37 @@ let computersTurn = () => {
   let key = remainingArr[idx];
   let value = placesArr[key];
   console.log(key + ": " + value);
-  let block = checkNextO();
+  let block = checkBlockingX();
+  let canOWin = checkNextOForWin();
+  console.log("x blocking: " + block + " o can win? " + canOWin);
+  if (
+    block === -1 &&
+    canOWin === -1 &&
+    !oArray.includes(4) &&
+    remainingArr.includes(4)
+  ) {
+    value = "r2c2";
+  }
+  if (block === -1 && canOWin !== -1) {
+    value = placesArr[canOWin];
+    console.log(value);
+  }
   if (block !== -1) {
     value = placesArr[block];
   }
+
   return value;
+};
+
+const playCaseCheck = (idInput, pushToArray) => {
+  let indexNumber = placesArr.indexOf(idInput);
+  remainingArr.splice(remainingArr.indexOf(indexNumber), 1);
+  if (turn === "X") {
+    xArray.push(pushToArray);
+  }
+  if (turn === "O") {
+    oArray.push(pushToArray);
+  }
 };
 
 const play = (idInput) => {
@@ -95,98 +130,74 @@ const play = (idInput) => {
   switch (idInput) {
     case "r1c1":
       if (r1c1Element.innerHTML === "") {
-        indexNumber = placesArr.indexOf("r1c1");
-        remainingArr.splice(remainingArr.indexOf(indexNumber), 1);
-        if (turn === "X") {
-          xArray.push(0);
-        }
+        playCaseCheck("r1c1", 0);
         r1c1Element.innerHTML = turn;
       }
       break;
     case "r1c2":
       if (r1c2Element.innerHTML === "") {
-        indexNumber = placesArr.indexOf("r1c2");
-        remainingArr.splice(remainingArr.indexOf(indexNumber), 1);
-        if (turn === "X") {
-          xArray.push(1);
-        }
+        playCaseCheck("r1c2", 1);
         r1c2Element.innerHTML = turn;
       }
       break;
     case "r1c3":
       if (r1c3Element.innerHTML === "") {
-        indexNumber = placesArr.indexOf("r1c3");
-        remainingArr.splice(remainingArr.indexOf(indexNumber), 1);
-        if (turn === "X") {
-          xArray.push(2);
-        }
+        playCaseCheck("r1c3", 2);
         r1c3Element.innerHTML = turn;
       }
       break;
     case "r2c1":
       if (r2c1Element.innerHTML === "") {
-        indexNumber = placesArr.indexOf("r2c1");
-        remainingArr.splice(remainingArr.indexOf(indexNumber), 1);
-        if (turn === "X") {
-          xArray.push(3);
-        }
+        playCaseCheck("r2c1", 3);
         r2c1Element.innerHTML = turn;
       }
       break;
     case "r2c2":
       if (r2c2Element.innerHTML === "") {
-        indexNumber = placesArr.indexOf("r2c2");
-        remainingArr.splice(remainingArr.indexOf(indexNumber), 1);
-        if (turn === "X") {
-          xArray.push(4);
-        }
+        playCaseCheck("r2c2", 4);
         r2c2Element.innerHTML = turn;
       }
       break;
     case "r2c3":
       if (r2c3Element.innerHTML === "") {
-        indexNumber = placesArr.indexOf("r2c3");
-        remainingArr.splice(remainingArr.indexOf(indexNumber), 1);
-        if (turn === "X") {
-          xArray.push(5);
-        }
+        playCaseCheck("r2c3", 5);
         r2c3Element.innerHTML = turn;
       }
       break;
     case "r3c1":
       if (r3c1Element.innerHTML === "") {
-        indexNumber = placesArr.indexOf("r3c1");
-        remainingArr.splice(remainingArr.indexOf(indexNumber), 1);
-        if (turn === "X") {
-          xArray.push(6);
-        }
+        playCaseCheck("r3c1", 6);
         r3c1Element.innerHTML = turn;
       }
       break;
     case "r3c2":
       if (r3c2Element.innerHTML === "") {
-        indexNumber = placesArr.indexOf("r3c2");
-        remainingArr.splice(remainingArr.indexOf(indexNumber), 1);
-        if (turn === "X") {
-          xArray.push(7);
-        }
+        playCaseCheck("r3c2", 7);
         r3c2Element.innerHTML = turn;
       }
       break;
     case "r3c3":
       if (r3c3Element.innerHTML === "") {
-        indexNumber = placesArr.indexOf("r3c3");
-        remainingArr.splice(remainingArr.indexOf(indexNumber), 1);
-        if (turn === "X") {
-          xArray.push(8);
-        }
+        playCaseCheck("r3c3", 8);
         r3c3Element.innerHTML = turn;
       }
       break;
   }
-  console.log(remainingArr);
-  console.log(xArray);
-  changeTurn();
+  console.log(count);
+  console.log("remainingArr: " + remainingArr);
+  console.log("xArray: " + xArray);
+  console.log("oArray: " + oArray);
+  if (count === 9) {
+    document.getElementsByClassName("panel")[0].innerHTML =
+      "It's a tie! No one wins! A rematch?";
+    localStorage.setItem("whoWon", "It's a tie! No one wins! A rematch?");
+  }
+  if (!isWin && count < 9) {
+    didWin();
+    if (!isWin) {
+      changeTurn();
+    }
+  }
 };
 
 r1c1Element.addEventListener("click", function () {
@@ -228,31 +239,44 @@ const didWin = () => {
   let r3c2 = r3c2Element.innerText;
   let r3c3 = r3c3Element.innerText;
 
+  console.log("using didwin*****");
   switch (true) {
     case r1c1 === r1c2 && r1c1 === r1c3 && r1c1 !== "":
     case r1c1 === r2c1 && r1c1 === r3c1 && r1c1 !== "":
     case r1c1 === r2c2 && r1c1 === r3c3 && r1c1 !== "":
+      console.log("**********");
       alertWin(r1c1);
       endGame();
+      isWin = true;
       break;
     case r2c1 === r2c2 && r2c1 === r2c3 && r2c1 !== "":
     case r1c2 === r2c2 && r1c2 === r3c2 && r1c2 !== "":
+      console.log("**********");
       alertWin(r2c2);
       endGame();
+      isWin = true;
       break;
     case r1c3 === r2c3 && r1c3 === r3c3 && r1c3 !== "":
     case r1c3 === r2c2 && r1c3 === r3c1 && r3c1 !== "":
+      console.log("**********");
       alertWin(r1c3);
       endGame();
+      isWin = true;
       break;
     case r3c1 === r3c2 && r3c1 === r3c3 && r3c1 !== "":
+      console.log("**********");
       alertWin(r3c1);
       endGame();
+      isWin = true;
       break;
     case count === 9:
+      console.log("~~~~~~~~~*");
       document.getElementsByClassName("panel")[0].innerHTML =
         "It's a tie! No one wins! A rematch?";
       localStorage.setItem("whoWon", "It's a tie! No one wins! A rematch?");
+    default:
+      console.log("no win");
+      return false;
     // setTimeout(function () {
     //   alert(`It's a tie! No one wins! A rematch?`);
     // }, 0);
@@ -260,6 +284,7 @@ const didWin = () => {
 };
 
 const alertWin = (whoWon) => {
+  console.log("alert win with updated points: " + pointsOfLoggedIn);
   document.getElementsByClassName(
     "panel"
   )[0].innerHTML = `We have a winner! ${whoWon} WON!!!`;
@@ -267,6 +292,7 @@ const alertWin = (whoWon) => {
     "whoWon",
     `We have a winner! ${whoWon} WON!!! A rematch?`
   );
+  console.log("increasing points!!!");
   pointsOfLoggedIn++;
   updateWinPointsInDb();
 };
@@ -313,6 +339,8 @@ const reset = () => {
   localStorage.setItem("whoWon", "Winners Status");
   remainingArr = [0, 1, 2, 3, 4, 5, 6, 7, 8];
   xArray = [];
+  oArray = [];
+  isWin = false;
 };
 
 resetButton.addEventListener("click", (e) => {
@@ -373,62 +401,124 @@ const updateWinPointsInDb = () => {
   }
 };
 
-let blockWin = (a, b, c) => {
+let blockXWin = (a, b, c) => {
   if (xArray.includes(a) && xArray.includes(b) && remainingArr.includes(c)) {
     return c;
   }
   return -1;
 };
 
-let checkNextO = () => {
+let checkBlockingX = () => {
   switch (true) {
-    case blockWin(0, 1, 2) != -1:
+    case blockXWin(0, 1, 2) != -1:
       return 2;
-    case blockWin(1, 2, 0) != -1:
+    case blockXWin(1, 2, 0) != -1:
       return 0;
-    case blockWin(0, 2, 1) != -1:
+    case blockXWin(0, 2, 1) != -1:
       return 1;
-    case blockWin(3, 4, 5) != -1:
+    case blockXWin(3, 4, 5) != -1:
       return 5;
-    case blockWin(3, 5, 4) != -1:
+    case blockXWin(3, 5, 4) != -1:
       return 4;
-    case blockWin(4, 5, 3) != -1:
+    case blockXWin(4, 5, 3) != -1:
       return 3;
-    case blockWin(6, 7, 8) != -1:
+    case blockXWin(6, 7, 8) != -1:
       return 8;
-    case blockWin(6, 8, 7) != -1:
+    case blockXWin(6, 8, 7) != -1:
       return 7;
-    case blockWin(7, 8, 6) != -1:
+    case blockXWin(7, 8, 6) != -1:
       return 6;
-    case blockWin(0, 3, 6) != -1:
+    case blockXWin(0, 3, 6) != -1:
       return 6;
-    case blockWin(0, 6, 3) != -1:
+    case blockXWin(0, 6, 3) != -1:
       return 3;
-    case blockWin(3, 6, 0) != -1:
+    case blockXWin(3, 6, 0) != -1:
       return 0;
-    case blockWin(1, 4, 7) != -1:
+    case blockXWin(1, 4, 7) != -1:
       return 7;
-    case blockWin(1, 7, 4) != -1:
+    case blockXWin(1, 7, 4) != -1:
       return 4;
-    case blockWin(4, 7, 1) != -1:
+    case blockXWin(4, 7, 1) != -1:
       return 1;
-    case blockWin(2, 5, 8) != -1:
+    case blockXWin(2, 5, 8) != -1:
       return 8;
-    case blockWin(2, 8, 5) != -1:
+    case blockXWin(2, 8, 5) != -1:
       return 5;
-    case blockWin(5, 8, 2) != -1:
+    case blockXWin(5, 8, 2) != -1:
       return 2;
-    case blockWin(0, 4, 8) != -1:
+    case blockXWin(0, 4, 8) != -1:
       return 8;
-    case blockWin(0, 8, 4) != -1:
+    case blockXWin(0, 8, 4) != -1:
       return 4;
-    case blockWin(4, 8, 0) != -1:
+    case blockXWin(4, 8, 0) != -1:
       return 0;
-    case blockWin(2, 4, 6) != -1:
+    case blockXWin(2, 4, 6) != -1:
       return 6;
-    case blockWin(2, 6, 4) != -1:
+    case blockXWin(2, 6, 4) != -1:
       return 4;
-    case blockWin(4, 6, 2) != -1:
+    case blockXWin(4, 6, 2) != -1:
+      return 2;
+    default:
+      return -1;
+  }
+};
+
+let nextOForWin = (a, b, c) => {
+  if (oArray.includes(a) && oArray.includes(b) && remainingArr.includes(c)) {
+    return c;
+  }
+  return -1;
+};
+
+let checkNextOForWin = () => {
+  switch (true) {
+    case nextOForWin(0, 1, 2) != -1:
+      return 2;
+    case nextOForWin(1, 2, 0) != -1:
+      return 0;
+    case nextOForWin(0, 2, 1) != -1:
+      return 1;
+    case nextOForWin(3, 4, 5) != -1:
+      return 5;
+    case nextOForWin(3, 5, 4) != -1:
+      return 4;
+    case nextOForWin(4, 5, 3) != -1:
+      return 3;
+    case nextOForWin(6, 7, 8) != -1:
+      return 8;
+    case nextOForWin(6, 8, 7) != -1:
+      return 7;
+    case nextOForWin(7, 8, 6) != -1:
+      return 6;
+    case nextOForWin(0, 3, 6) != -1:
+      return 6;
+    case nextOForWin(0, 6, 3) != -1:
+      return 3;
+    case nextOForWin(3, 6, 0) != -1:
+      return 0;
+    case nextOForWin(1, 4, 7) != -1:
+      return 7;
+    case nextOForWin(1, 7, 4) != -1:
+      return 4;
+    case nextOForWin(4, 7, 1) != -1:
+      return 1;
+    case nextOForWin(2, 5, 8) != -1:
+      return 8;
+    case nextOForWin(2, 8, 5) != -1:
+      return 5;
+    case nextOForWin(5, 8, 2) != -1:
+      return 2;
+    case nextOForWin(0, 4, 8) != -1:
+      return 8;
+    case nextOForWin(0, 8, 4) != -1:
+      return 4;
+    case nextOForWin(4, 8, 0) != -1:
+      return 0;
+    case nextOForWin(2, 4, 6) != -1:
+      return 6;
+    case nextOForWin(2, 6, 4) != -1:
+      return 4;
+    case nextOForWin(4, 6, 2) != -1:
       return 2;
     default:
       return -1;
