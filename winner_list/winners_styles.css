@@ -15,7 +15,8 @@ html {
 }
 
 body {
-  background: -webkit-linear-gradient(top, #0f2f53, rgb(182, 242, 255));
+  /* background: -webkit-linear-gradient(top, #0f2f53, rgb(182, 242, 255)); */
+  background-color: whitesmoke;
   height: 100%;
 }
 
@@ -37,30 +38,31 @@ body {
   background: -webkit-linear-gradient(top, #0f2f53, #264e7d);
 }
 
-/* .footer {
-  grid-column: 1/13;
-  grid-row: 12/13;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  color: beige;
-  background: -webkit-linear-gradient(top, #0f2f53, #264e7d);
-} */
-
 .footer {
   grid-column: 1/13;
   grid-row: 12/13;
   overflow: hidden;
 }
 
+.header {
+  grid-column: 1/13;
+  grid-row: 1/2;
+  overflow: hidden;
+}
+
 .header-winner {
-  grid-column: 4/9;
+  grid-column: 4/10;
   grid-row: 3/4;
   display: flex;
   justify-content: center;
   align-items: center;
   color: beige;
-  background: -webkit-linear-gradient(top, #0f2f53, #264e7d);
+  /* background: -webkit-linear-gradient(top, #0f2f53, #264e7d); */
+  background: linear-gradient(
+    180deg,
+    rgba(9, 94, 121, 1) 0%,
+    rgba(100, 149, 237, 1) 100%
+  );
 }
 
 .winners-table-container {
@@ -81,7 +83,12 @@ table {
   border-collapse: collapse;
   width: 70%;
   margin: 0 auto;
-  background-color: #104d5e;
+  /* background-color: #104d5e; */
+  background: linear-gradient(
+    180deg,
+    rgba(9, 94, 121, 1) 0%,
+    rgba(100, 149, 237, 1) 100%
+  );
   border: 1px solid gray;
   position: absolute;
   top: 5px;
@@ -113,7 +120,8 @@ th {
   padding: 10px;
   font-weight: bold;
   position: absolute;
-  bottom: -20px;
+  /* bottom: -20px; */
+  top: 270px;
 }
 
 .winner-container [type="button"]:hover {
@@ -131,7 +139,7 @@ th {
   }
 
   .winners-table-container [type="button"] {
-    left: 35%;
+    left: 45%;
   }
 }
 

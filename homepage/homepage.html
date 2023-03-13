@@ -7,25 +7,42 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="homepage.css">
     </link>
-    <title>TicTacToe HomePage</title>
+    <link
+      rel="shortcut icon"
+      type="image/x-icon"
+      href="../images/tic-tac-toe.png"
+    />
+    <title>TicTacToe</title>
 
 </head>
 
 <body>
+  <div class="homepage">
     <!-- vhttps://github.com/hakimiansh/TicTacToe.git // -->
-
-    <img width="400px" height="200px"
-        src="../images/tik.jpg" alt="משחק של פעם">
-    <h1 id="h1">ברוכים הבאים למשחק איקס עיגול, המשחק שהסעיר את המדינה</h1>
+    <div class="header">
+      <iframe
+        src="../header/header.html"
+        title="header"
+        width="100%"
+        height="100%"
+        style="border: none"
+      ></iframe>
+    </div>
+    <div class="banner">
+      <img  src="../images/tik.jpg" alt="משחק של פעם" class="shadow">
+      <div class="welcome-title">
+        <h1 id="h1">ברוכים הבאים למשחק איקס עיגול <br> המשחק שהסעיר את המדינה</h1>
+      </div>
+     </div>
     <div class="homepage-container">
-        <h1 class="title">TicTacToe - דף הבית</h1>
+      <div class="middle-container">  <h1 class="title">TicTacToe - דף הבית</h1>
         <div class="login">
             <br>
             <h3>כניסה למשחק</h3>
             <div class="login-form-container">
                 <form id="loginForm" /*onsubmit="response()"*/>
                   <div class="field-block">
-                    <label for="email">Email: </label>
+                    <label for="email">Email:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
                     <input
                       type="email"
                       id="email"
@@ -54,9 +71,21 @@
                 <a href="../register/register.html"><input type="button" value="register link" /></a>
                 <a href="../game-one-player/index.html"><input type="button" value="כניסת אורח" /></a>
             </div>
-            <div id="player-does-not-exist" class="hidden not-exists">User doesn't exist</div>
-        </div>
-        
+            <div id="player-does-not-exist" class="hidden not-exists">Wrong email or password</div>
+        </div></div>
+      
+       
+      </div>
+      <div class="footer">
+        <iframe
+         src="../footer/footer.html"
+         title="footer"
+         width="100%"
+         height="100%"
+         style="border: none"
+       ></iframe>
+     </div>
+    </div>
         <script type="module" src="homepage.js"></script>
 </body>
 
