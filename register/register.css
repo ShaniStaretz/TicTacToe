@@ -16,7 +16,7 @@ html {
 
 body {
   /* background: -webkit-linear-gradient(top, #0f2f53, rgb(182, 242, 255)); */
-  background: rgb(236, 238, 206);
+  background-color: whitesmoke;
   height: 100%;
 }
 
@@ -45,16 +45,27 @@ body {
 }
 
 .header {
+  grid-column: 1/13;
+  grid-row: 1/2;
+  overflow: hidden;
+}
+
+.register-header {
   grid-column: 4/9;
   grid-row: 3/4;
   display: flex;
   justify-content: center;
   align-items: center;
   color: beige;
-  background: -webkit-linear-gradient(top, #0f2f53, #264e7d);
+  /* background: -webkit-linear-gradient(top, #0f2f53, #264e7d); */
+  background: linear-gradient(
+    180deg,
+    rgba(9, 94, 121, 1) 0%,
+    rgba(100, 149, 237, 1) 100%
+  );
 }
 
-.nav-bar {
+/* .nav-bar {
   grid-column: 1/13;
   grid-row: 1/2;
   display: flex;
@@ -62,10 +73,15 @@ body {
   align-items: center;
   color: beige;
   background: -webkit-linear-gradient(top, #0f2f53, #264e7d);
-}
+} */
 
 .register-form-container {
-  background: -webkit-linear-gradient(top, #0f2f53, rgb(182, 242, 255));
+  /* background: -webkit-linear-gradient(top, #0f2f53, rgb(182, 242, 255)); */
+  background: linear-gradient(
+    180deg,
+    rgba(9, 94, 121, 1) 0%,
+    rgba(100, 149, 237, 1) 100%
+  );
   border: 1px solid white;
   border-radius: 10%;
   grid-column: 4/9;
@@ -150,7 +166,7 @@ form {
 }
 
 @media only screen and (max-width: 1110px) {
-  .header {
+  .register-header {
     grid-column: 2/12;
     grid-row: 3/4;
   }
