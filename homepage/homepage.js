@@ -10,6 +10,7 @@ let submitEl = document.getElementById("submit");
 let playerDoesNotExistEl = document.getElementById("player-does-not-exist");
 let emailElement = document.getElementById("email");
 let passwordElement = document.getElementById("password");
+let guestElement = document.getElementById("guest");
 
 let userExists = false;
 
@@ -82,4 +83,10 @@ emailElement.addEventListener("input", (e) => {
 
 passwordElement.addEventListener("input", (e) => {
   playerDoesNotExistEl.className = "hidden not-exists";
+});
+
+guestElement.addEventListener("click", (e) => {
+  localStorage.setItem("loggedUser", "Guest");
+  localStorage.removeItem("loggedUserId");
+  localStorage.removeItem("loginDay");
 });
