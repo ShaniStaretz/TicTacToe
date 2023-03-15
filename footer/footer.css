@@ -35,3 +35,9 @@ body {
   font-size: 20px;
   overflow: hidden;
 }
+
+@media only screen and (max-width: 1110px) {
+  .footer {
+    font-size: small;
+  }
+}

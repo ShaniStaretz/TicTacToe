@@ -201,31 +201,49 @@ const play = (idInput) => {
 };
 
 r1c1Element.addEventListener("click", function () {
-  play("r1c1");
+  if (!xArray.includes(0) && !oArray.includes(0)) {
+    play("r1c1");
+  }
 });
 r1c2Element.addEventListener("click", function () {
-  play("r1c2");
+  if (!xArray.includes(1) && !oArray.includes(1)) {
+    play("r1c2");
+  }
 });
 r1c3Element.addEventListener("click", function () {
-  play("r1c3");
+  if (!xArray.includes(2) && !oArray.includes(2)) {
+    play("r1c3");
+  }
 });
 r2c1Element.addEventListener("click", function () {
-  play("r2c1");
+  if (!xArray.includes(3) && !oArray.includes(3)) {
+    play("r2c1");
+  }
 });
 r2c2Element.addEventListener("click", function () {
-  play("r2c2");
+  if (!xArray.includes(4) && !oArray.includes(4)) {
+    play("r2c2");
+  }
 });
 r2c3Element.addEventListener("click", function () {
-  play("r2c3");
+  if (!xArray.includes(5) && !oArray.includes(5)) {
+    play("r2c3");
+  }
 });
 r3c1Element.addEventListener("click", function () {
-  play("r3c1");
+  if (!xArray.includes(6) && !oArray.includes(6)) {
+    play("r3c1");
+  }
 });
 r3c2Element.addEventListener("click", function () {
-  play("r3c2");
+  if (!xArray.includes(7) && !oArray.includes(7)) {
+    play("r3c2");
+  }
 });
 r3c3Element.addEventListener("click", function () {
-  play("r3c3");
+  if (!xArray.includes(8) && !oArray.includes(8)) {
+    play("r3c3");
+  }
 });
 
 const didWin = () => {
