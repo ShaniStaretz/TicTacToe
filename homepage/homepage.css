@@ -156,3 +156,59 @@ input {
   grid-row: 12/13;
   overflow: hidden;
 }
+
+@media only screen and (max-height: 807px) {
+  .homepage img { 
+height: 100px;
+  }
+
+  .welcome-title{
+    font-size: small;
+  }
+
+  .middle-container{
+  font-size: small;
+  }
+
+  .banner {
+    grid-column: 2/13;
+    grid-row: 2/3;
+  }
+  .homepage-container {
+    grid-column: 6/10;
+    grid-row: 4/11;
+  }
+
+  .login{
+    grid-column: 6/10;
+    grid-row: 4/11;
+
+  }
+}
+
+@media only screen and (max-width: 1110px) {
+  .homepage img { 
+    width: 30%;
+      }
+    
+      .welcome-title{
+        font-size: small;
+      }
+    
+      .banner {
+        grid-column: 1/13;
+        grid-row: 2/3;
+      }
+      .homepage-container {
+        grid-column: 3/12;
+        grid-row: 4/11;
+      }
+ 
+     .login{
+      grid-column: 3/12;
+      grid-row: 4/11;
+    }
+     s
+ 
+ 
+    }
