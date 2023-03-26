@@ -157,58 +157,30 @@ input {
   overflow: hidden;
 }
 
-@media only screen and (max-height: 807px) {
-  .homepage img { 
-height: 100px;
-  }
-
-  .welcome-title{
-    font-size: small;
-  }
-
-  .middle-container{
-  font-size: small;
-  }
-
-  .banner {
-    grid-column: 2/13;
-    grid-row: 2/3;
-  }
+@media only screen and (max-width: 1110px) {
   .homepage-container {
-    grid-column: 6/10;
-    grid-row: 4/11;
+    grid-column: 2/12;
+    grid-row: 5/12;
   }
 
-  .login{
-    grid-column: 6/10;
-    grid-row: 4/11;
+  div.field-block {
+    padding-left: 30px;
+  }
 
+  .welcome-title,
+  .homepage h3,
+  .homepage h1 {
+    font-size: x-large;
+    align-self: center;
+  }
+
+  h1.title {
+    padding-top: 0px;
+    padding-bottom: 5px;
+  }
+
+  .homepage img {
+    height: 130px;
+    width: 30%;
   }
 }
-
-@media only screen and (max-width: 1110px) {
-  .homepage img { 
-    width: 30%;
-      }
-    
-      .welcome-title{
-        font-size: small;
-      }
-    
-      .banner {
-        grid-column: 1/13;
-        grid-row: 2/3;
-      }
-      .homepage-container {
-        grid-column: 3/12;
-        grid-row: 4/11;
-      }
- 
-     .login{
-      grid-column: 3/12;
-      grid-row: 4/11;
-    }
-     s
- 
- 
-    }
