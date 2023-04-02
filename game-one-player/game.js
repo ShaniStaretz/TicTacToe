@@ -101,11 +101,12 @@ let computersTurn = () => {
   ) {
     value = "r2c2";
   }
-  if (block === -1 && canOWin !== -1) {
+  if (canOWin !== -1) {
+    console.log("**************");
     value = placesArr[canOWin];
     console.log(value);
-  }
-  if (block !== -1) {
+    return value;
+  } else if (block !== -1) {
     value = placesArr[block];
   }
 
@@ -196,6 +197,8 @@ const play = (idInput) => {
     didWin();
     if (!isWin) {
       changeTurn();
+    } else {
+      alertWin(whoWon);
     }
   }
 };
@@ -302,6 +305,7 @@ const didWin = () => {
 };
 
 const alertWin = (whoWon) => {
+  console.log(whoWon + " won");
   console.log("alert win with updated points: " + pointsOfLoggedIn);
   document.getElementsByClassName(
     "panel"
